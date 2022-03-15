@@ -36,8 +36,35 @@ namespace DragonDBExample.Controllers
             }
         }
 
-        //UPDATE
-        //DELETE
+        //UPDATE - Dev 1
+        public void UpdateDragon(int id, Dragon d)
+        {
+            using (DragonsDBEntities db = new DragonsDBEntities())
+            {
+                var dragonToUpdate = db.Dragons.Where(p => p.Id == id).FirstOrDefault();
+                if (dragonToUpdate != null)
+                {
+                    dragonToUpdate.Id = id;
+                    dragonToUpdate.Name = d.Name;
+                    dragonToUpdate.Kills = d.Kills;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        //DELETE - Dev 2
+        public void DeleteDragon(int id)
+        {
+            using (DragonsDBEntities db = new DragonsDBEntities())
+            {
+                var dragonToDelete = db.Dragons.Where(d => d.Id == id).FirstOrDefault();
+                if (dragonToDelete != null)
+                {
+                    db.Dragons.Remove(dragonToDelete);
+                    db.SaveChanges();
+                }
+            }
+        }
 
         public List<Dragon> ShowAllDragonsWithMoreKills()
         {
