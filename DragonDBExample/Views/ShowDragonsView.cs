@@ -44,5 +44,24 @@ namespace DragonDBExample.Views
             showDragonsController.CreateDragon(dragon);
             RefreshTable();
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvDragons.CurrentRow;
+            int id = int.Parse(row.Cells["Id"].Value.ToString());
+            Dragon dragon = new Dragon();
+            dragon.Name = txtName.Text;
+            dragon.Kills = int.Parse(txtKills.Text);
+            showDragonsController.UpdateDragon(id, dragon);
+            RefreshTable();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvDragons.CurrentRow;
+            int id = int.Parse(row.Cells["Id"].Value.ToString());
+            showDragonsController.DeleteDragon(id);
+            RefreshTable();
+        }
     }
 }

@@ -31,15 +31,18 @@ namespace DragonDBExample.Views
         {
             this.components = new System.ComponentModel.Container();
             this.dgvDragons = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.killsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dragonBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnDragonsMoreThan20Kills = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
             this.lblKills = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtKills = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.dragonBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.killsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDragons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dragonBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -50,28 +53,13 @@ namespace DragonDBExample.Views
             this.dgvDragons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDragons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
+            this.Id,
             this.killsDataGridViewTextBoxColumn});
             this.dgvDragons.DataSource = this.dragonBindingSource;
             this.dgvDragons.Location = new System.Drawing.Point(12, 12);
             this.dgvDragons.Name = "dgvDragons";
             this.dgvDragons.Size = new System.Drawing.Size(244, 210);
             this.dgvDragons.TabIndex = 0;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // killsDataGridViewTextBoxColumn
-            // 
-            this.killsDataGridViewTextBoxColumn.DataPropertyName = "Kills";
-            this.killsDataGridViewTextBoxColumn.HeaderText = "Kills";
-            this.killsDataGridViewTextBoxColumn.Name = "killsDataGridViewTextBoxColumn";
-            // 
-            // dragonBindingSource
-            // 
-            this.dragonBindingSource.DataSource = typeof(DragonDBExample.Models.Dragon);
             // 
             // btnDragonsMoreThan20Kills
             // 
@@ -132,6 +120,51 @@ namespace DragonDBExample.Views
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(655, 213);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(133, 77);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "Delete Dragon";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(655, 110);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(133, 77);
+            this.btnUpdate.TabIndex = 8;
+            this.btnUpdate.Text = "Update Dragon";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // dragonBindingSource
+            // 
+            this.dragonBindingSource.DataSource = typeof(DragonDBExample.Models.Dragon);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // killsDataGridViewTextBoxColumn
+            // 
+            this.killsDataGridViewTextBoxColumn.DataPropertyName = "Kills";
+            this.killsDataGridViewTextBoxColumn.HeaderText = "Kills";
+            this.killsDataGridViewTextBoxColumn.Name = "killsDataGridViewTextBoxColumn";
+            // 
             // ShowDragonsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,6 +172,8 @@ namespace DragonDBExample.Views
             this.BackgroundImage = global::DragonDBExample.Properties.Resources.DragonBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtKills);
             this.Controls.Add(this.txtName);
@@ -159,8 +194,6 @@ namespace DragonDBExample.Views
         #endregion
 
         private System.Windows.Forms.DataGridView dgvDragons;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn killsDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource dragonBindingSource;
         private System.Windows.Forms.Button btnDragonsMoreThan20Kills;
         private System.Windows.Forms.Label lblName;
@@ -168,5 +201,10 @@ namespace DragonDBExample.Views
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtKills;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn killsDataGridViewTextBoxColumn;
     }
 }
