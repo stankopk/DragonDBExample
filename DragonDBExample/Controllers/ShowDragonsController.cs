@@ -18,7 +18,24 @@ namespace DragonDBExample.Controllers
             }
         }
 
-        //CREATE
+        //Create - Team Leader
+        public void CreateDragon(Dragon d)
+        {
+            using (DragonsDBEntities db = new DragonsDBEntities())
+            {
+                var lastDragon = db.Dragons.ToList().LastOrDefault();
+                if (lastDragon == null)
+                {
+                    lastDragon = new Dragon();
+                    lastDragon.Id = 0;
+                }
+
+                d.Id = lastDragon.Id + 1;
+                db.Dragons.Add(d);
+                db.SaveChanges();
+            }
+        }
+
         //UPDATE
         //DELETE
 
